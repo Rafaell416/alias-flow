@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                          
+    "module": "ESNext",                       
+    "lib": ["dom", "esnext"],                 
+    "outDir": "./dist",                       
+    "strict": true,                           
+    "esModuleInterop": true,                  
+    "skipLibCheck": true,                     
+    "moduleResolution": "node",               
+    "sourceMap": true,
+    "types": ["chrome"]
+  },
+  "include": ["src/**/*.ts"],                 
+  "exclude": ["node_modules"]                 
+}

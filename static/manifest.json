@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Alias Flow",
+  "version": "0.0.1",
+  "description": "A Gmail extension that automates email aliases, labels, and filters for seamless inbox organization.",
+  "permissions": [
+    "identity",
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://mail.google.com/*",
+    "https://www.googleapis.com/*",
+    "https://apis.google.com/*"
+  ],
+  "background": {
+    "service_worker": "background.bundle.js" 
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://mail.google.com/*"],
+      "js": ["content.bundle.js"],
+      "run_at": "document_end"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/icon.png",
+      "24": "assets/icon.png",
+      "32": "assets/icon.png"
+    },
+    "default_title": "Alias flow"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; connect-src https://www.googleapis.com; frame-src https://accounts.google.com;"
+  },
+  "oauth2": {
+    "client_id": "888329993932-1fufsgns834ghv05rsf0aba2g1n0cvd3.apps.googleusercontent.com",
+    "scopes": [
+      "https://www.googleapis.com/auth/gmail.modify",
+      "https://www.googleapis.com/auth/gmail.settings.basic"
+    ]
+  }
+}
