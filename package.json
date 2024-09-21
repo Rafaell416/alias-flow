@@ -1,6 +1,6 @@
 {
   "name": "alias-flow",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Gmail extension that automates email aliases, labels, and filters for seamless inbox organization.",
   "main": "index.js",
   "repository": "git@github.com:Rafaell416/alias-flow.git",

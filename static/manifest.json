@@ -1,14 +1,9 @@
 {
   "manifest_version": 3,
   "name": "Alias Flow",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A Gmail extension that automates email aliases, labels, and filters for seamless inbox organization.",
-  "permissions": [
-    "identity",
-    "storage",
-    "activeTab",
-    "scripting"
-  ],
+  "permissions": ["identity"],
   "host_permissions": [
     "https://mail.google.com/*",
     "https://www.googleapis.com/*",

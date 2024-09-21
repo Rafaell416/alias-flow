@@ -19,6 +19,30 @@ import { footerTemplate } from "./templates/footer_template";
 (() => {
   let isAliasCreationVisible = false;
 
+  const validateAliasInput = () => {
+    const aliasInput = document.querySelector(".alias-input") as HTMLInputElement;
+    const createAliasButton = document.querySelector(".create-alias-button") as HTMLButtonElement;
+  
+    if (aliasInput && createAliasButton) {
+      const containsSpaces = /\s/.test(aliasInput.value);
+  
+      if (containsSpaces) {
+        createAliasButton.disabled = true;
+        createAliasButton.classList.add('disabled');
+      } else {
+        createAliasButton.disabled = false;
+        createAliasButton.classList.remove('disabled');
+      }
+    }
+  };
+
+  const setupAliasValidation = () => {
+    const aliasInput = document.querySelector(".alias-input");
+    if (aliasInput) {
+      aliasInput.addEventListener("input", validateAliasInput);
+    }
+  };
+
   const toggleButtonState = (button: HTMLButtonElement, isLoading: boolean) => {
     button.textContent = isLoading ? "Creating..." : "Create Alias";
     button.disabled = isLoading;
@@ -84,7 +108,7 @@ import { footerTemplate } from "./templates/footer_template";
         content.innerHTML = emptyStateTemplate;
       }
 
-      content.innerHTML += footerTemplate;
+      //content.innerHTML += footerTemplate;
       addLogoutCapability();
 
     } catch (error) {
@@ -120,7 +144,6 @@ import { footerTemplate } from "./templates/footer_template";
   };
 
   const deleteLabelAndFilter = async (event: Event) => {
-    console.log({event})
     const target = event.currentTarget as HTMLElement;
     const alias = target.getAttribute("data-alias");
     const labelId = target.getAttribute("data-labelId");
@@ -156,6 +179,8 @@ import { footerTemplate } from "./templates/footer_template";
       if (createAliasButton) {
         createAliasButton.addEventListener("click", createAliasAndFilter);
       }
+
+      setupAliasValidation();
     }
   };
 
